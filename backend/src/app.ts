@@ -18,13 +18,15 @@ import challanRoutes from "./routes/challan.routes.js";
 
 const app = express();
 
-app.use(
-    cors({
-        origin: "https://mini-erp-crm-beta-ivory.vercel.app",
-        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+const corsOptions = {
+    origin: "https://mini-erp-crm-beta-ivory.vercel.app",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+
+app.options(/.*/, cors(corsOptions));
 
 app.use(express.json());
 
