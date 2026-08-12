@@ -30,6 +30,12 @@ app.options(/.*/, cors(corsOptions));
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.json({
+        success: true,
+        message: "Mini ERP backend is working"
+    });
+});
 
 app.get("/api/health", (req, res) => {
     res.status(200).json({
